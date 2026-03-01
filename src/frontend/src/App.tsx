@@ -362,6 +362,23 @@ function HeroSection() {
   );
 }
 
+// ── Product image map ────────────────────────────────────────────────────────
+const productImages: Record<string, string> = {
+  cpu: "/assets/generated/product-cpu.dim_400x300.jpg",
+  ram: "/assets/generated/product-ram.dim_400x300.jpg",
+  hdd: "/assets/generated/product-hdd.dim_400x300.jpg",
+  ssd: "/assets/generated/product-ssd.dim_400x300.jpg",
+  fan: "/assets/generated/product-fan.dim_400x300.jpg",
+};
+
+function getProductImage(name: string): string | null {
+  const lower = name.toLowerCase();
+  for (const [key, img] of Object.entries(productImages)) {
+    if (lower.includes(key)) return img;
+  }
+  return null;
+}
+
 // ── Products Section ─────────────────────────────────────────────────────────
 function ProductsSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -485,75 +502,91 @@ function ProductsSection() {
             animate="show"
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
-            {filtered.map((product) => (
-              <motion.div
-                key={product.id.toString()}
-                variants={cardVariants}
-                className="group relative rounded-xl border border-white/10 card-frosted hover:border-primary/50 transition-all duration-300 hover:shadow-card-hover overflow-hidden flex flex-col"
-              >
-                {/* Top edge glow on hover */}
-                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
+            {filtered.map((product) => {
+              const productImg = getProductImage(product.name);
+              return (
+                <motion.div
+                  key={product.id.toString()}
+                  variants={cardVariants}
+                  className="group relative rounded-xl border border-white/10 card-frosted hover:border-primary/50 transition-all duration-300 hover:shadow-card-hover overflow-hidden flex flex-col"
+                >
+                  {/* Top edge glow on hover */}
+                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
 
-                <div className="p-6 flex flex-col flex-1">
-                  {/* Category + Stock row */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${
-                        categoryColors[product.category] ??
-                        "bg-primary/12 text-primary border-primary/25"
-                      }`}
-                    >
-                      {categoryIcons[product.category]}
-                      {product.category}
-                    </span>
-                    {product.inStock ? (
-                      <span className="flex items-center gap-1 text-xs font-medium text-emerald-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
-                        In Stock
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground/60">
-                        <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 inline-block" />
-                        Out of Stock
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Name — primary info, larger */}
-                  <h3 className="font-display font-bold text-foreground text-xl leading-tight mb-2.5 group-hover:text-primary transition-colors duration-200">
-                    {product.name}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1 mb-5">
-                    {product.description}
-                  </p>
-
-                  {/* Price bar — distinct tinted background */}
-                  <div className="flex items-center justify-between -mx-6 -mb-6 px-6 py-4 bg-muted/20 border-t border-border mt-auto rounded-b-xl">
-                    <div>
-                      <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">
-                        Price
-                      </p>
-                      <span className="font-mono-price font-bold text-2xl text-primary">
-                        ${product.price.toFixed(2)}
-                      </span>
+                  {/* Product image */}
+                  {productImg && (
+                    <div className="relative w-full h-40 overflow-hidden">
+                      <img
+                        src={productImg}
+                        alt={product.name}
+                        className="w-full h-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-500"
+                      />
+                      {/* Gradient overlay for smooth transition to card content */}
+                      <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-card/80 to-transparent" />
                     </div>
-                    <Button
-                      size="sm"
-                      className={`h-8 text-xs font-semibold transition-all ${
-                        product.inStock
-                          ? "bg-primary text-primary-foreground hover:opacity-85 shadow-cyan-sm"
-                          : "bg-muted/50 text-muted-foreground cursor-not-allowed"
-                      }`}
-                      disabled={!product.inStock}
-                    >
-                      {product.inStock ? "Add to Cart" : "Unavailable"}
-                    </Button>
+                  )}
+
+                  <div className="p-6 flex flex-col flex-1">
+                    {/* Category + Stock row */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${
+                          categoryColors[product.category] ??
+                          "bg-primary/12 text-primary border-primary/25"
+                        }`}
+                      >
+                        {categoryIcons[product.category]}
+                        {product.category}
+                      </span>
+                      {product.inStock ? (
+                        <span className="flex items-center gap-1 text-xs font-medium text-emerald-400">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+                          In Stock
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground/60">
+                          <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 inline-block" />
+                          Out of Stock
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Name — primary info, larger */}
+                    <h3 className="font-display font-bold text-foreground text-xl leading-tight mb-2.5 group-hover:text-primary transition-colors duration-200">
+                      {product.name}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1 mb-5">
+                      {product.description}
+                    </p>
+
+                    {/* Price bar — distinct tinted background */}
+                    <div className="flex items-center justify-between -mx-6 -mb-6 px-6 py-4 bg-muted/20 border-t border-border mt-auto rounded-b-xl">
+                      <div>
+                        <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">
+                          Price
+                        </p>
+                        <span className="font-mono-price font-bold text-2xl text-primary">
+                          ₹{product.price.toLocaleString("en-IN")}
+                        </span>
+                      </div>
+                      <Button
+                        size="sm"
+                        className={`h-8 text-xs font-semibold transition-all ${
+                          product.inStock
+                            ? "bg-primary text-primary-foreground hover:opacity-85 shadow-cyan-sm"
+                            : "bg-muted/50 text-muted-foreground cursor-not-allowed"
+                        }`}
+                        disabled={!product.inStock}
+                      >
+                        {product.inStock ? "Add to Cart" : "Unavailable"}
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </div>
@@ -652,7 +685,7 @@ function ServicesSection() {
                         Starting from
                       </p>
                       <span className="font-mono-price font-bold text-xl text-primary">
-                        ${service.price.toFixed(2)}
+                        ₹{service.price.toLocaleString("en-IN")}
                       </span>
                     </div>
                     <div className="text-right">
@@ -1069,6 +1102,51 @@ function ContactSection() {
             </div>
           </motion.div>
         </div>
+
+        {/* Map section */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-14 max-w-5xl mx-auto"
+        >
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-primary">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-xl text-foreground">
+                  Find Us
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Chitali, Pathardi, Ahmednagar, Maharashtra
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://www.openstreetmap.org/?mlat=19.22&mlon=74.67#map=14/19.22/74.67"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary text-sm font-semibold hover:underline flex items-center gap-1"
+            >
+              View Larger Map
+              <ChevronRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="rounded-xl border border-white/10 overflow-hidden">
+            <iframe
+              title="RS Computers Location"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=74.62%2C19.17%2C74.72%2C19.27&layer=mapnik&marker=19.22%2C74.67"
+              width="100%"
+              height="400"
+              style={{ border: 0, display: "block" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -1173,6 +1251,50 @@ function Footer() {
   );
 }
 
+// ── New products to seed ─────────────────────────────────────────────────────
+const newProductsToAdd = [
+  {
+    name: "Intel Core i5 CPU",
+    description:
+      "12th Gen Intel Core i5 processor, 6 cores, 12 threads, 3.3GHz base clock. Ideal for gaming and productivity.",
+    price: 12500,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "DDR4 8GB RAM",
+    description:
+      "8GB DDR4 2666MHz RAM module. Compatible with most desktop and laptop systems.",
+    price: 2800,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "1TB Hard Disk (HDD)",
+    description:
+      'Seagate 1TB 3.5" SATA hard drive, 7200RPM. Reliable storage for data, documents and media.',
+    price: 3200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "256GB SSD",
+    description:
+      "Kingston 256GB SATA SSD. Fast boot times and application loading, major upgrade over HDD.",
+    price: 2500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "120mm RGB Case Fan",
+    description:
+      "120mm RGB cooling fan for PC cases. Quiet operation, 1200RPM, colourful LED lighting.",
+    price: 850,
+    category: Category.Accessories,
+    inStock: true,
+  },
+];
+
 // ── Root App ─────────────────────────────────────────────────────────────────
 export default function App() {
   const { data: products } = useGetAllProducts();
@@ -1182,9 +1304,24 @@ export default function App() {
 
   useEffect(() => {
     if (actor && !isFetching && !seeded.current && products !== undefined) {
+      seeded.current = true;
       if (products.length === 0) {
-        seeded.current = true;
         seedData();
+      }
+      // Add new products if "Intel Core i5 CPU" is not yet in the list
+      const hasNewProducts = products.some((p) =>
+        p.name.includes("Intel Core i5 CPU"),
+      );
+      if (!hasNewProducts) {
+        for (const p of newProductsToAdd) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
       }
     }
   }, [actor, isFetching, products, seedData]);
