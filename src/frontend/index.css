@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Cabinet Grotesk — Display headings ─────────────────────────────── */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Satoshi — Body text ─────────────────────────────────────────────── */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Geist Mono — Prices / code ──────────────────────────────────────── */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* ── Base colors ── */
+    --background:    0.09 0.012 255;
+    --foreground:    0.96 0.005 250;
+
+    --card:          0.12 0.015 255;
+    --card-foreground: 0.96 0.005 250;
+
+    --popover:       0.14 0.018 255;
+    --popover-foreground: 0.96 0.005 250;
+
+    /* ── Cyan electric primary ── */
+    --primary:       0.78 0.17 195;
+    --primary-foreground: 0.08 0.015 255;
+
+    /* ── Secondary: mid-navy panel ── */
+    --secondary:     0.18 0.02 255;
+    --secondary-foreground: 0.85 0.01 250;
+
+    /* ── Muted ── */
+    --muted:         0.16 0.018 255;
+    --muted-foreground: 0.55 0.012 255;
+
+    /* ── Accent: brighter cyan ── */
+    --accent:        0.82 0.18 190;
+    --accent-foreground: 0.08 0.015 255;
+
+    /* ── Destructive ── */
+    --destructive:   0.62 0.22 25;
+    --destructive-foreground: 0.985 0 0;
+
+    /* ── Structural ── */
+    --border:        0.22 0.02 255;
+    --input:         0.20 0.022 255;
+    --ring:          0.78 0.17 195;
+
+    /* ── Charts ── */
+    --chart-1: 0.78 0.17 195;
+    --chart-2: 0.65 0.20 260;
+    --chart-3: 0.72 0.15 220;
+    --chart-4: 0.60 0.18 300;
+    --chart-5: 0.85 0.14 165;
+
+    /* ── Sidebar ── */
+    --sidebar:       0.10 0.014 255;
+    --sidebar-foreground: 0.96 0.005 250;
+    --sidebar-primary: 0.78 0.17 195;
+    --sidebar-primary-foreground: 0.08 0.015 255;
+    --sidebar-accent: 0.18 0.02 255;
+    --sidebar-accent-foreground: 0.96 0.005 250;
+    --sidebar-border: 0.22 0.02 255;
+    --sidebar-ring:   0.78 0.17 195;
+
+    /* ── Custom brand tokens ── */
+    --cyan-glow:     0.82 0.20 192;
+    --hero-overlay:  0.06 0.015 255;
+    --card-glass:    0.13 0.016 255;
+    --stat-highlight: 0.78 0.17 195;
+
+    /* ── 8K wallpaper background ── */
+    --wallpaper-overlay: rgba(5, 8, 20, 0.78);
+    --section-glass-bg: rgba(8, 12, 28, 0.72);
+    --section-glass-alt: rgba(6, 10, 24, 0.80);
+    --card-glass-alpha: rgba(12, 16, 36, 0.75);
+    --nav-glass: rgba(5, 8, 20, 0.92);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    /* Slideshow handles the background; body provides a dark fallback color */
+    background-color: oklch(0.09 0.012 255);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+  .font-body {
+    font-family: "Satoshi", sans-serif;
+  }
+  .font-mono-price {
+    font-family: "Geist Mono", monospace;
+  }
+
+  /* Glow effect for cyan elements */
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(var(--cyan-glow) / 0.35),
+                0 0 40px oklch(var(--cyan-glow) / 0.15);
+  }
+
+  .glow-cyan-text {
+    text-shadow: 0 0 20px oklch(var(--cyan-glow) / 0.6);
+  }
+
+  /* Card glass */
+  .card-glass {
+    background: oklch(var(--card-glass));
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--border));
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Circuit pattern bg — now used as accent overlays on top of wallpaper */
+  .circuit-bg {
+    background-image:
+      radial-gradient(circle at 25% 25%, oklch(var(--primary) / 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, oklch(var(--accent) / 0.03) 0%, transparent 50%);
+  }
+
+  /* ── Wallpaper section overlays ─────────────────────────────────────── */
+
+  /* Transparent "page overlay" — a dark scrim applied once on the root wrapper */
+  .bg-page-overlay {
+    background-color: var(--wallpaper-overlay);
+  }
+
+  /* Section glass: primary section tint */
+  .section-glass {
+    background-color: var(--section-glass-bg);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* Section glass alt: slightly darker for alternating sections */
+  .section-glass-alt {
+    background-color: var(--section-glass-alt);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* Card frosted glass — cards sit on top of section glass */
+  .card-frosted {
+    background-color: var(--card-glass-alpha);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* Nav glass */
+  .nav-glass {
+    background-color: var(--nav-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Footer glass */
+  .footer-glass {
+    background-color: rgba(4, 6, 16, 0.90);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
