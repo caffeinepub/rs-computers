@@ -6,6 +6,8 @@ import Nat "mo:core/Nat";
 import Iter "mo:core/Iter";
 import Order "mo:core/Order";
 
+
+
 actor {
   // Types
   type Product = {
@@ -67,7 +69,7 @@ actor {
   // Persistent storage using immutable data structures
   let products = Map.empty<Nat, Product>();
   let services = Map.empty<Nat, Service>();
-  var nextProductId = 7;
+  var nextProductId = 21;
   var nextServiceId = 5;
 
   // Initial shop info
@@ -144,6 +146,162 @@ actor {
         name = "Mechanical Keyboard";
         description = "RGB mechanical keyboard";
         price = 70.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+
+    // New products
+    products.add(
+      7,
+      {
+        id = 7;
+        name = "Workstation PC";
+        description = "High-performance workstation for video editing and 3D rendering";
+        price = 85000.00;
+        category = #Desktop;
+        inStock = true;
+      },
+    );
+    products.add(
+      8,
+      {
+        id = 8;
+        name = "Mini PC";
+        description = "Compact fanless mini PC ideal for office use";
+        price = 22000.00;
+        category = #Desktop;
+        inStock = true;
+      },
+    );
+    products.add(
+      9,
+      {
+        id = 9;
+        name = "Student Laptop";
+        description = "Affordable 14-inch laptop for students";
+        price = 28000.00;
+        category = #Laptop;
+        inStock = true;
+      },
+    );
+    products.add(
+      10,
+      {
+        id = 10;
+        name = "Ultrabook";
+        description = "Slim premium ultrabook with 12-hour battery life";
+        price = 65000.00;
+        category = #Laptop;
+        inStock = true;
+      },
+    );
+    products.add(
+      11,
+      {
+        id = 11;
+        name = "27-inch 4K Monitor";
+        description = "Ultra HD 27-inch display with HDR support";
+        price = 18000.00;
+        category = #Monitors;
+        inStock = true;
+      },
+    );
+    products.add(
+      12,
+      {
+        id = 12;
+        name = "Gaming Monitor 144Hz";
+        description = "24-inch full HD gaming monitor with 144Hz refresh rate";
+        price = 14500.00;
+        category = #Monitors;
+        inStock = true;
+      },
+    );
+    products.add(
+      13,
+      {
+        id = 13;
+        name = "Gaming Headset";
+        description = "Over-ear gaming headset with surround sound and mic";
+        price = 2800.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+    products.add(
+      14,
+      {
+        id = 14;
+        name = "Webcam HD";
+        description = "1080p HD webcam for video calls and streaming";
+        price = 1800.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+    products.add(
+      15,
+      {
+        id = 15;
+        name = "WiFi Router";
+        description = "Dual-band WiFi 6 router for fast home/office internet";
+        price = 3500.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+    products.add(
+      16,
+      {
+        id = 16;
+        name = "UPS 600VA";
+        description = "600VA UPS for desktop PC and peripherals";
+        price = 4200.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+    products.add(
+      17,
+      {
+        id = 17;
+        name = "Graphics Card GTX 1650";
+        description = "NVIDIA GTX 1650 4GB graphics card for gaming and editing";
+        price = 12000.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+    products.add(
+      18,
+      {
+        id = 18;
+        name = "Motherboard H510";
+        description = "Intel H510 ATX motherboard for 10th/11th gen processors";
+        price = 7500.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+    products.add(
+      19,
+      {
+        id = 19;
+        name = "Power Supply 650W";
+        description = "650W 80+ Bronze certified power supply unit";
+        price = 3800.00;
+        category = #Accessories;
+        inStock = true;
+      },
+    );
+    products.add(
+      20,
+      {
+        id = 20;
+        name = "USB Hub 4-Port";
+        description = "USB 3.0 4-port hub for expanding connectivity";
+        price = 800.00;
         category = #Accessories;
         inStock = true;
       },
@@ -295,7 +453,7 @@ actor {
   public func resetData() : async () {
     products.clear();
     services.clear();
-    nextProductId := 7;
+    nextProductId := 21;
     nextServiceId := 5;
     await seedData();
   };

@@ -12,6 +12,7 @@ import {
   ChevronRight,
   Clock,
   Cpu,
+  ExternalLink,
   Headphones,
   Laptop,
   Mail,
@@ -234,7 +235,7 @@ function HeroSection() {
     { icon: <Shield className="h-4 w-4" />, text: "Warranty Included" },
     { icon: <Zap className="h-4 w-4" />, text: "Same-Day Repairs" },
     { icon: <Star className="h-4 w-4" />, text: "5-Star Rated" },
-    { icon: <Users className="h-4 w-4" />, text: "5,000+ Customers" },
+    { icon: <Users className="h-4 w-4" />, text: "2K+ Customers" },
   ];
 
   return (
@@ -290,7 +291,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-            className="text-lg md:text-xl text-muted-foreground max-w-lg mb-10 leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground max-w-lg mb-6 leading-relaxed"
           >
             Premium hardware, laptops &amp; accessories — plus professional
             repair services. All in one place, right in your neighbourhood.
@@ -320,6 +321,31 @@ function HeroSection() {
               <Wrench className="mr-2 h-5 w-5" />
               Our Services
             </Button>
+          </motion.div>
+
+          {/* 5-Star badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex items-center gap-3 mb-6 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/30 w-fit"
+          >
+            <div className="flex items-center gap-0.5">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star
+                  key={s}
+                  className="h-5 w-5 fill-amber-400 text-amber-400"
+                />
+              ))}
+            </div>
+            <div>
+              <p className="text-amber-300 font-bold text-sm leading-tight">
+                5-Star Rated
+              </p>
+              <p className="text-amber-400/70 text-xs">
+                2,000+ Happy Customers
+              </p>
+            </div>
           </motion.div>
 
           {/* Trust bar */}
@@ -369,10 +395,109 @@ const productImages: Record<string, string> = {
   hdd: "/assets/generated/product-hdd.dim_400x300.jpg",
   ssd: "/assets/generated/product-ssd.dim_400x300.jpg",
   fan: "/assets/generated/product-fan.dim_400x300.jpg",
+  desktop: "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  workstation: "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  "mini pc": "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  "all-in-one": "/assets/generated/product-all-in-one.dim_400x300.jpg",
+  aio: "/assets/generated/product-all-in-one.dim_400x300.jpg",
+  laptop: "/assets/generated/product-laptop.dim_400x300.jpg",
+  ultrabook: "/assets/generated/product-laptop.dim_400x300.jpg",
+  monitor: "/assets/generated/product-monitor.dim_400x300.jpg",
+  keyboard: "/assets/generated/product-keyboard.dim_400x300.jpg",
+  mouse: "/assets/generated/product-mouse.dim_400x300.jpg",
+  headset: "/assets/generated/product-headset.dim_400x300.jpg",
+  webcam: "/assets/generated/product-webcam.dim_400x300.jpg",
+  router: "/assets/generated/product-router.dim_400x300.jpg",
+  ups: "/assets/generated/product-ups.dim_400x300.jpg",
+  "graphics card": "/assets/generated/product-gpu.dim_400x300.jpg",
+  gtx: "/assets/generated/product-gpu.dim_400x300.jpg",
+  rtx: "/assets/generated/product-gpu.dim_400x300.jpg",
+  motherboard: "/assets/generated/product-motherboard.dim_400x300.jpg",
+  "power supply": "/assets/generated/product-psu.dim_400x300.jpg",
+  psu: "/assets/generated/product-psu.dim_400x300.jpg",
+  "usb hub": "/assets/generated/product-usb-hub.dim_400x300.jpg",
+  "curved monitor": "/assets/generated/product-curved-monitor.dim_400x300.jpg",
+  "portable monitor":
+    "/assets/generated/product-portable-monitor.dim_400x300.jpg",
+  "external ssd": "/assets/generated/product-external-ssd.dim_400x300.jpg",
+  printer: "/assets/generated/product-printer.dim_400x300.jpg",
+  convertible: "/assets/generated/product-convertible-laptop.dim_400x300.jpg",
+  "2-in-1": "/assets/generated/product-convertible-laptop.dim_400x300.jpg",
+  chromebook: "/assets/generated/product-chromebook.dim_400x300.jpg",
+  "gaming laptop": "/assets/generated/product-gaming-laptop.dim_400x300.jpg",
+  "creator laptop": "/assets/generated/product-gaming-laptop.dim_400x300.jpg",
+  "thin & light": "/assets/generated/product-ultrabook-slim.dim_400x300.jpg",
+  "refurbished dell": "/assets/generated/product-laptop.dim_400x300.jpg",
+  "refurbished hp": "/assets/generated/product-laptop.dim_400x300.jpg",
+  "refurbished laptop": "/assets/generated/product-laptop.dim_400x300.jpg",
+  "budget laptop": "/assets/generated/product-laptop.dim_400x300.jpg",
+  "office desktop":
+    "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  "micro tower": "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  "tower pc": "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  "refurbished desktop":
+    "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  "second hand desktop":
+    "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  "custom gaming desktop":
+    "/assets/generated/product-desktop-computer.dim_400x300.jpg",
+  '27" 4k': "/assets/generated/product-monitor-27k.dim_400x300.jpg",
+  '32" 4k': "/assets/generated/product-monitor-27k.dim_400x300.jpg",
+  "gaming monitor": "/assets/generated/product-monitor-144hz.dim_400x300.jpg",
+  "144hz": "/assets/generated/product-monitor-144hz.dim_400x300.jpg",
+  "docking station":
+    "/assets/generated/product-docking-station.dim_400x300.jpg",
+  "cooling pad": "/assets/generated/product-cooling-pad.dim_400x300.jpg",
+  ultrawide: "/assets/generated/product-ultrawide-monitor.dim_400x300.jpg",
+  '34"': "/assets/generated/product-ultrawide-monitor.dim_400x300.jpg",
+  "laptop stand": "/assets/generated/product-laptop-stand.dim_400x300.jpg",
+  stand: "/assets/generated/product-laptop-stand.dim_400x300.jpg",
+  "webcam hd": "/assets/generated/product-webcam-hd.dim_400x300.jpg",
 };
 
 function getProductImage(name: string): string | null {
   const lower = name.toLowerCase();
+  // Check multi-word keys first (longer keys take priority)
+  const multiWordKeys = [
+    "all-in-one",
+    "all in one",
+    "mini pc",
+    "graphics card",
+    "power supply",
+    "usb hub",
+    "curved monitor",
+    "portable monitor",
+    "external ssd",
+    "gaming laptop",
+    "creator laptop",
+    "gaming monitor",
+    "2-in-1",
+    "convertible",
+    "thin & light",
+    "budget laptop",
+    "refurbished dell",
+    "refurbished hp",
+    "refurbished laptop",
+    "refurbished desktop",
+    "office desktop",
+    "micro tower",
+    "tower pc",
+    "second hand desktop",
+    "custom gaming desktop",
+    '27" 4k',
+    '32" 4k',
+    "144hz",
+    "docking station",
+    "cooling pad",
+    "laptop stand",
+    "webcam hd",
+    "ultrawide",
+    '34"',
+  ];
+  for (const key of multiWordKeys) {
+    if (lower.includes(key))
+      return productImages[key] ?? productImages["all-in-one"];
+  }
   for (const [key, img] of Object.entries(productImages)) {
     if (lower.includes(key)) return img;
   }
@@ -738,7 +863,7 @@ function ServicesSection() {
 function AboutSection() {
   const stats = [
     { value: 15, suffix: "+", label: "Years in Business" },
-    { value: 5000, suffix: "+", label: "Happy Customers" },
+    { value: 2000, suffix: "+", label: "Happy Customers" },
     { value: 98, suffix: "%", label: "Satisfaction Rate" },
     { value: 500, suffix: "+", label: "Products Available" },
   ];
@@ -903,6 +1028,18 @@ function ContactSection() {
           label: "Hours",
           value: "Mon–Sat: 10am–7pm",
         },
+        {
+          icon: <ExternalLink className="h-5 w-5" />,
+          label: "Facebook",
+          value: "facebook.com/rscomputers.nagar",
+          href: "https://www.facebook.com/rscomputers.nagar",
+        },
+        {
+          icon: <ExternalLink className="h-5 w-5" />,
+          label: "Instagram",
+          value: "@rs_computers_official",
+          href: "https://www.instagram.com/rs_computers_official/",
+        },
       ]
     : [];
 
@@ -964,9 +1101,20 @@ function ContactSection() {
                         <p className="text-xs text-muted-foreground uppercase tracking-wide font-semibold mb-0.5">
                           {item.label}
                         </p>
-                        <p className="text-foreground text-sm font-medium">
-                          {item.value}
-                        </p>
+                        {"href" in item && item.href ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary text-sm font-medium hover:underline"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-foreground text-sm font-medium">
+                            {item.value}
+                          </p>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -1126,23 +1274,24 @@ function ContactSection() {
               </div>
             </div>
             <a
-              href="https://www.openstreetmap.org/?mlat=19.22&mlon=74.67#map=14/19.22/74.67"
+              href="https://share.google/2aO0XnnuB74ELmy0O"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary text-sm font-semibold hover:underline flex items-center gap-1"
             >
-              View Larger Map
+              Open in Google Maps
               <ChevronRight className="h-4 w-4" />
             </a>
           </div>
           <div className="rounded-xl border border-white/10 overflow-hidden">
             <iframe
               title="RS Computers Location"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=74.62%2C19.17%2C74.72%2C19.27&layer=mapnik&marker=19.22%2C74.67"
+              src="https://maps.google.com/maps?q=Chitali,Pathardi,Ahmednagar,Maharashtra+414505,India&output=embed&z=15"
               width="100%"
               height="400"
               style={{ border: 0, display: "block" }}
               loading="lazy"
+              allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
@@ -1227,6 +1376,28 @@ function Footer() {
                 <Clock className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>Mon–Sat 10am–7pm</span>
               </li>
+              <li className="flex gap-2 text-sm text-muted-foreground">
+                <ExternalLink className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                <a
+                  href="https://www.facebook.com/rscomputers.nagar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Facebook Page
+                </a>
+              </li>
+              <li className="flex gap-2 text-sm text-muted-foreground">
+                <ExternalLink className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                <a
+                  href="https://www.instagram.com/rs_computers_official/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  @rs_computers_official
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -1250,6 +1421,520 @@ function Footer() {
     </footer>
   );
 }
+
+// ── Extra laptop & desktop products ──────────────────────────────────────────
+const extraLaptopDesktopProducts = [
+  // Laptops
+  {
+    name: "Gaming Laptop RTX 4060",
+    description:
+      "High-performance gaming laptop with Intel Core i7 13th Gen, RTX 4060, 16GB RAM, 512GB NVMe SSD, 144Hz display. Dominate every game.",
+    price: 89000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Creator Laptop",
+    description:
+      "15.6-inch creator laptop, Intel Core i7, 32GB RAM, 1TB SSD, OLED display. Built for video editing, design, and 3D work.",
+    price: 95000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "2-in-1 Convertible Laptop",
+    description:
+      "360° touchscreen convertible laptop, Intel Core i5, 8GB RAM, 256GB SSD. Use as laptop or tablet with stylus support.",
+    price: 42000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Chromebook",
+    description:
+      "Lightweight Chromebook for students and everyday use. Fast boot, 10-hour battery, 4GB RAM, 64GB storage.",
+    price: 18500,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Thin & Light Laptop",
+    description:
+      "Ultra-slim 13.3-inch laptop under 1.2kg, Intel Core i5, 8GB RAM, 512GB SSD. Perfect for travel and daily commute.",
+    price: 52000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Budget Laptop",
+    description:
+      "Affordable 15.6-inch laptop for basic tasks, Intel Celeron, 4GB RAM, 500GB HDD. Great for students and home use.",
+    price: 14000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Refurbished Dell Laptop",
+    description:
+      "Certified refurbished Dell Latitude 5490, Core i5 8th Gen, 8GB RAM, 256GB SSD. Tested and warrantied. Great value.",
+    price: 16500,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Refurbished HP Laptop",
+    description:
+      "Certified refurbished HP ProBook 440, Core i5 7th Gen, 8GB RAM, 256GB SSD. Professionally cleaned and tested.",
+    price: 15000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  // Desktops
+  {
+    name: "Office Desktop PC",
+    description:
+      "Reliable office desktop, Intel Core i3, 8GB RAM, 1TB HDD, Windows 11. Ideal for daily office work and browsing.",
+    price: 22000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Micro Tower PC",
+    description:
+      "Compact micro tower desktop, Intel Core i5, 8GB RAM, 256GB SSD. Space-saving form factor for homes and offices.",
+    price: 28000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Tower PC Core i7",
+    description:
+      "Full tower desktop with Intel Core i7 12th Gen, 16GB RAM, 512GB SSD + 1TB HDD. Great for heavy multitasking.",
+    price: 55000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Refurbished Desktop PC",
+    description:
+      "Certified refurbished desktop with Core i5 6th Gen, 8GB RAM, 500GB HDD, Windows 10 licensed. Budget-friendly.",
+    price: 10500,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Second Hand Desktop Core i3",
+    description:
+      "Used desktop PC, Core i3 4th Gen, 4GB RAM, 320GB HDD. Tested and functional. Good for basic use.",
+    price: 6500,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Custom Gaming Desktop",
+    description:
+      "Custom-built gaming PC with AMD Ryzen 5, RX 6600, 16GB DDR4, 512GB NVMe SSD, RGB cabinet. Ready to ship.",
+    price: 62000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+];
+
+// ── Monitor & Accessories products ───────────────────────────────────────────
+const monitorAccessoryProducts = [
+  // Monitors
+  {
+    name: '27" 4K IPS Monitor',
+    description:
+      "27-inch 4K UHD IPS monitor, 60Hz, HDMI + DisplayPort, built-in speakers, ultra-thin bezel. Stunning clarity for work and media.",
+    price: 18500,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: '32" 4K Monitor',
+    description:
+      "32-inch 4K VA panel monitor, wide colour gamut, 5ms response time, height adjustable stand. Ideal for creative professionals.",
+    price: 26000,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: "Gaming Monitor 144Hz",
+    description:
+      "24-inch Full HD 144Hz gaming monitor, 1ms response time, AMD FreeSync, HDMI & DisplayPort. Buttery-smooth gameplay.",
+    price: 14500,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: "Curved Gaming Monitor",
+    description:
+      "27-inch 1080p curved monitor, 165Hz, 1ms, ultra-wide viewing angle. Immersive experience for gamers.",
+    price: 19000,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: "Portable Monitor",
+    description:
+      "15.6-inch portable USB-C monitor, Full HD IPS panel, plug-and-play, slim design. Perfect for laptops and mobile setups.",
+    price: 9500,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  // Accessories
+  {
+    name: "Laptop Cooling Pad",
+    description:
+      "Adjustable laptop cooling pad with dual fans, LED lighting, 2 USB ports. Fits laptops up to 17 inches. Keeps your system cool.",
+    price: 1200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "USB-C Docking Station",
+    description:
+      "7-in-1 USB-C docking station with HDMI, 3x USB 3.0, SD card reader, USB-C PD charging. Single cable desk setup.",
+    price: 3200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "External SSD 500GB",
+    description:
+      "Portable 500GB USB 3.2 external SSD, 550MB/s read speed, rugged design. Fast backup and data transfer.",
+    price: 4500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Inkjet Printer",
+    description:
+      "Colour inkjet all-in-one printer with scan and copy, Wi-Fi printing, mobile print support. Great for home and office.",
+    price: 5800,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Wireless Keyboard & Mouse Combo",
+    description:
+      "2.4GHz wireless keyboard and mouse combo, silent keys, ergonomic design, long battery life. Perfect office set.",
+    price: 1800,
+    category: Category.Accessories,
+    inStock: true,
+  },
+];
+
+// ── Extra monitor & accessories products (batch 2) ───────────────────────────
+const extraMonitorAccessoryProducts = [
+  // Monitors
+  {
+    name: '34" Ultrawide Monitor',
+    description:
+      "34-inch ultrawide 21:9 curved IPS monitor, 3440×1440 WQHD, 100Hz, AMD FreeSync, USB-C. Immersive multitasking for power users.",
+    price: 32000,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: '22" FHD Office Monitor',
+    description:
+      "22-inch Full HD IPS monitor, 60Hz, thin bezel, HDMI & VGA ports, eye-care filter. Reliable everyday display for home and office.",
+    price: 7200,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: '27" 165Hz Gaming Monitor',
+    description:
+      "27-inch QHD 165Hz gaming monitor, 1ms MPRT, HDR400, G-Sync compatible. Crystal-clear visuals with ultra-smooth gameplay.",
+    price: 22000,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  // Accessories
+  {
+    name: "Aluminium Laptop Stand",
+    description:
+      "Adjustable aluminium laptop stand with ventilated design, foldable and portable. Compatible with 11-17 inch laptops. Ergonomic working posture.",
+    price: 1500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "HD Webcam 1080p",
+    description:
+      "Full HD 1080p USB webcam with built-in noise-cancelling microphone, auto light correction. Perfect for video calls and streaming.",
+    price: 2200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "HDMI Cable 1.8m",
+    description:
+      "High-speed HDMI 2.0 cable, 1.8m, supports 4K@60Hz, braided nylon jacket. Essential connection for monitors, TVs and projectors.",
+    price: 350,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: 'Laptop Bag 15.6"',
+    description:
+      "Water-resistant laptop backpack with USB charging port, fits up to 15.6-inch laptops. Multiple compartments for accessories and documents.",
+    price: 1200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Optical Mouse",
+    description:
+      "Wired USB optical mouse with 1200 DPI, scroll wheel, ergonomic shape. Plug and play — compatible with all operating systems.",
+    price: 350,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "USB Hub 4-Port",
+    description:
+      "Compact 4-port USB 3.0 hub with LED indicator and data transfer up to 5Gbps. Expand your laptop or desktop connectivity instantly.",
+    price: 650,
+    category: Category.Accessories,
+    inStock: true,
+  },
+];
+
+// ── Extra desktop products (batch 2) ─────────────────────────────────────────
+const extraDesktopProducts = [
+  {
+    name: "Home Desktop Core i5",
+    description:
+      "Everyday home desktop with Intel Core i5 10th Gen, 8GB RAM, 512GB SSD, DVD drive, Windows 11. Great for family use and home tasks.",
+    price: 32000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Slim Desktop Mini PC",
+    description:
+      "Ultra-compact mini PC with Intel Core i3 12th Gen, 8GB RAM, 256GB SSD. Fan-less, whisper-quiet, fits behind any monitor.",
+    price: 18000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "High-End Workstation",
+    description:
+      "Professional workstation with Intel Core i9 13th Gen, 32GB ECC RAM, 1TB NVMe SSD + 2TB HDD, Quadro GPU. Built for CAD, video production and heavy computation.",
+    price: 125000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+];
+
+// ── Extra laptop products (batch 2) ──────────────────────────────────────────
+const extraLaptopProducts2 = [
+  {
+    name: 'Student Laptop 11.6"',
+    description:
+      "Affordable 11.6-inch student laptop with Intel Celeron N4020, 4GB RAM, 64GB eMMC, Windows 11 S. Lightweight and perfect for school.",
+    price: 11500,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Laptop Core i7 16GB",
+    description:
+      "15.6-inch powerhouse laptop with Intel Core i7 12th Gen, 16GB RAM, 512GB SSD, Full HD IPS display. Handle demanding apps with ease.",
+    price: 65000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: 'Slim Ultrabook 13"',
+    description:
+      "Premium 13.3-inch ultrabook with Intel Core i5, 8GB LPDDR5 RAM, 512GB NVMe SSD, fingerprint reader. Elegant, lightweight, all-day battery.",
+    price: 58000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+];
+
+// ── Extra Desktop, Laptop, Monitor & Accessories (batch 3) ────────────────────
+const extraProductsBatch3 = [
+  // Desktops
+  {
+    name: "AMD Ryzen 7 Desktop",
+    description:
+      "Powerful desktop with AMD Ryzen 7 5800X, 32GB DDR4 RAM, 1TB NVMe SSD, RTX 3060. Excellent for gaming and creative workflows.",
+    price: 72000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Budget Office Desktop i3",
+    description:
+      "Value-priced office desktop with Intel Core i3 10th Gen, 4GB RAM, 500GB HDD, Windows 11 Home. Handles everyday tasks reliably.",
+    price: 15500,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Gaming PC RTX 4070",
+    description:
+      "Premium gaming PC with Intel Core i9 13th Gen, 32GB DDR5 RAM, 1TB NVMe SSD, NVIDIA RTX 4070 Ti. Runs any game at ultra settings.",
+    price: 145000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "Small Form Factor PC",
+    description:
+      "Compact SFF PC with AMD Ryzen 5 5600, 16GB RAM, 512GB SSD. Tiny footprint, big performance. Great for space-constrained setups.",
+    price: 38000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  // Laptops
+  {
+    name: "MacBook Air M2 (Refurbished)",
+    description:
+      "Certified refurbished MacBook Air with Apple M2 chip, 8GB Unified Memory, 256GB SSD. Fast, fanless, all-day battery.",
+    price: 82000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "HP Pavilion 15 i5",
+    description:
+      "HP Pavilion 15.6-inch laptop, Intel Core i5 12th Gen, 16GB RAM, 512GB SSD, Full HD anti-glare display. Versatile everyday companion.",
+    price: 48000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Lenovo IdeaPad Slim 5",
+    description:
+      "Sleek Lenovo IdeaPad Slim 5, AMD Ryzen 5 5500U, 8GB RAM, 512GB SSD, 15.6-inch FHD display. Great balance of price and performance.",
+    price: 38000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "Dell Inspiron 14 Core i7",
+    description:
+      "Dell Inspiron 14-inch laptop with Intel Core i7 12th Gen, 16GB RAM, 512GB SSD, Windows 11. Solid build for professionals.",
+    price: 62000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: "ASUS VivoBook 15 Ryzen 5",
+    description:
+      "ASUS VivoBook 15 with AMD Ryzen 5 5500U, 8GB RAM, 512GB SSD, Full HD IPS display, fingerprint login. Compact and capable.",
+    price: 36000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  // Monitors
+  {
+    name: '19" HD Budget Monitor',
+    description:
+      "19-inch HD TN monitor with HDMI and VGA, 60Hz, eye-care filter. Ideal entry-level display for basic computing.",
+    price: 4800,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: '24" FHD 165Hz Gaming Monitor',
+    description:
+      "24-inch Full HD 165Hz gaming monitor, 1ms response, IPS panel, G-Sync compatible, HDMI 2.0. Smooth visuals for competitive gaming.",
+    price: 16500,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: '27" QHD IPS Monitor',
+    description:
+      "27-inch 2560×1440 QHD IPS monitor, 75Hz, Delta E<2 colour accuracy, USB-C + HDMI. Sharp detail for design and content creation.",
+    price: 21000,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: '4K OLED Monitor 27"',
+    description:
+      "27-inch 4K OLED professional monitor, 120Hz, DCI-P3 99%, HDR True Black 400. Exceptional contrast and colour for creative pros.",
+    price: 55000,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  // Accessories
+  {
+    name: "Noise Cancelling Headphones",
+    description:
+      "Over-ear wireless headphones with active noise cancellation, 30-hour battery, Bluetooth 5.0. Clear audio for work and music.",
+    price: 4500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Mechanical Keyboard Compact TKL",
+    description:
+      "Tenkeyless mechanical keyboard with blue switches, RGB per-key lighting, aluminium frame. Precise tactile feedback for typists and gamers.",
+    price: 3200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Ergonomic Wrist Rest",
+    description:
+      "Memory foam keyboard and mouse wrist rest set. Non-slip base, comfortable support for long typing sessions.",
+    price: 750,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Portable 20000mAh Power Bank",
+    description:
+      "20000mAh power bank with 65W USB-C PD fast charging, 2x USB-A + 1x USB-C ports. Charge laptops and phones on the go.",
+    price: 2800,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Surge Protector 6-Socket",
+    description:
+      "6-socket surge protector with master switch, USB charging ports and 2-metre cable. Protects your equipment from voltage spikes.",
+    price: 1100,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Cat6 Ethernet Cable 5m",
+    description:
+      "5-metre Cat6 flat ethernet cable, snag-less RJ45, supports Gigabit speeds. Clean cable management for home and office.",
+    price: 280,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Laptop Privacy Screen Filter",
+    description:
+      "14-inch anti-spy privacy screen filter for laptops. Limits side viewing angles, reduces glare, protects screen from scratches.",
+    price: 950,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Wireless Charging Pad",
+    description:
+      "15W fast wireless charger compatible with Qi-enabled devices — phones, earbuds, and more. Compact, non-slip base.",
+    price: 1200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+];
 
 // ── New products to seed ─────────────────────────────────────────────────────
 const newProductsToAdd = [
@@ -1295,6 +1980,182 @@ const newProductsToAdd = [
   },
 ];
 
+// ── Computer products to seed ─────────────────────────────────────────────────
+const computerProductsToAdd = [
+  {
+    name: "Gaming Desktop PC",
+    description:
+      "High-performance gaming desktop with Intel Core i7, 16GB RAM, 512GB SSD, RGB lighting. Ready to play out of the box.",
+    price: 45000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: "All-in-One Desktop",
+    description:
+      '27" all-in-one computer with Full HD display, Intel Core i5, 8GB RAM, 1TB HDD. Perfect for home and office use.',
+    price: 38000,
+    category: Category.Desktop,
+    inStock: true,
+  },
+  {
+    name: 'Business Laptop 14"',
+    description:
+      "14-inch slim business laptop, Intel Core i5 11th Gen, 8GB RAM, 512GB SSD, Full HD display. Lightweight and powerful.",
+    price: 35000,
+    category: Category.Laptop,
+    inStock: true,
+  },
+  {
+    name: '24" LED Monitor',
+    description:
+      "24-inch Full HD IPS LED monitor, 75Hz refresh rate, ultra-thin bezels, HDMI & VGA ports. Crisp and vibrant display.",
+    price: 9500,
+    category: Category.Monitors,
+    inStock: true,
+  },
+  {
+    name: "Mechanical Gaming Keyboard",
+    description:
+      "Full-size mechanical gaming keyboard with RGB backlight, tactile switches, anti-ghosting. Built to last.",
+    price: 2200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Wireless Gaming Mouse",
+    description:
+      "Ergonomic wireless gaming mouse, 6 programmable buttons, adjustable DPI up to 6400, long battery life.",
+    price: 1500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+];
+
+// ── Networking & peripherals batch 4 ────────────────────────────────────────
+const networkingPeripheralsBatch4 = [
+  {
+    name: "Wired USB Mouse",
+    description:
+      "Plug-and-play USB optical mouse, 1200 DPI, symmetric design, silent click buttons. Compatible with Windows, Mac and Linux.",
+    price: 350,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Wireless Mouse",
+    description:
+      "2.4GHz wireless optical mouse, nano USB receiver, 1600 DPI adjustable, 12-month battery life. Smooth gliding on any surface.",
+    price: 650,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Gaming Mouse RGB",
+    description:
+      "Wired RGB gaming mouse, 7200 DPI optical sensor, 7 programmable buttons, braided cable. Precision control for competitive gaming.",
+    price: 1200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "USB Wired Keyboard",
+    description:
+      "Full-size USB membrane keyboard with number pad, multimedia shortcut keys, spill-resistant. Quiet and comfortable for daily typing.",
+    price: 450,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Wireless Keyboard & Mouse Combo",
+    description:
+      "2.4GHz wireless keyboard and mouse combo, single USB receiver, slim design, 1 year battery. Great for home and office.",
+    price: 1100,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Network Switch 8-Port",
+    description:
+      "8-port unmanaged gigabit ethernet switch, plug-and-play, auto MDI/MDIX, metal housing. Expand your wired network instantly.",
+    price: 2200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Network Switch 16-Port",
+    description:
+      "16-port gigabit unmanaged switch for office networks. Supports jumbo frames, VLAN ready, rackmount brackets included.",
+    price: 4500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "WiFi Router AC1200",
+    description:
+      "Dual-band AC1200 wireless router, 2.4GHz + 5GHz, 4 antennas, 4 LAN ports. Fast and reliable internet for home and small office.",
+    price: 2800,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "WiFi Router AC2100",
+    description:
+      "Tri-band AC2100 router with MU-MIMO, beamforming, USB 3.0 port for NAS sharing. Handles 50+ devices simultaneously.",
+    price: 5500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Broadband Modem Router",
+    description:
+      "ADSL/VDSL modem router combo, dual-band WiFi, 4 LAN ports, compatible with BSNL, Airtel and Jio Fiber connections.",
+    price: 3200,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "IP Desk Telephone",
+    description:
+      "Corded VoIP desk phone with HD voice, 2-line SIP, backlit LCD display. Ideal for office and business use.",
+    price: 2500,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Cordless DECT Telephone",
+    description:
+      "Digital cordless phone with answering machine, caller ID, 300m range. Expandable to 5 handsets on one base.",
+    price: 1800,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Laptop Charger 45W Universal",
+    description:
+      "45W universal laptop charger with multiple tips, compatible with HP, Dell, Lenovo, Acer, Asus. Auto voltage detection, safety certified.",
+    price: 950,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "Laptop Charger 65W Universal",
+    description:
+      "65W universal laptop adapter with USB-C and barrel connectors. Supports most brands including HP, Dell, Lenovo, Samsung. Surge protected.",
+    price: 1400,
+    category: Category.Accessories,
+    inStock: true,
+  },
+  {
+    name: "USB-C Laptop Charger 90W",
+    description:
+      "90W USB-C PD fast charger compatible with MacBook, Dell XPS, HP Spectre, Lenovo ThinkPad. Compact design with LED indicator.",
+    price: 1800,
+    category: Category.Accessories,
+    inStock: true,
+  },
+];
+
 // ── Root App ─────────────────────────────────────────────────────────────────
 export default function App() {
   const { data: products } = useGetAllProducts();
@@ -1314,6 +2175,126 @@ export default function App() {
       );
       if (!hasNewProducts) {
         for (const p of newProductsToAdd) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add computer products if "Gaming Desktop PC" is not yet in the list
+      const hasComputerProducts = products.some((p) =>
+        p.name.includes("Gaming Desktop PC"),
+      );
+      if (!hasComputerProducts) {
+        for (const p of computerProductsToAdd) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add extra laptop & desktop products if not yet seeded
+      const hasExtraProducts = products.some((p) =>
+        p.name.includes("Gaming Laptop RTX 4060"),
+      );
+      if (!hasExtraProducts) {
+        for (const p of extraLaptopDesktopProducts) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add monitor & accessory products if not yet seeded
+      const hasMonitorProducts = products.some((p) =>
+        p.name.includes('27" 4K IPS Monitor'),
+      );
+      if (!hasMonitorProducts) {
+        for (const p of monitorAccessoryProducts) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add extra monitor & accessory products (batch 2)
+      const hasExtraMonitorProducts = products.some((p) =>
+        p.name.includes('34" Ultrawide Monitor'),
+      );
+      if (!hasExtraMonitorProducts) {
+        for (const p of extraMonitorAccessoryProducts) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add extra desktop products (batch 2)
+      const hasExtraDesktopProducts = products.some((p) =>
+        p.name.includes("Home Desktop Core i5"),
+      );
+      if (!hasExtraDesktopProducts) {
+        for (const p of extraDesktopProducts) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add extra laptop products (batch 2)
+      const hasExtraLaptopProducts2 = products.some((p) =>
+        p.name.includes('Student Laptop 11.6"'),
+      );
+      if (!hasExtraLaptopProducts2) {
+        for (const p of extraLaptopProducts2) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add extra desktop, laptop, monitor & accessories (batch 3)
+      const hasExtraProductsBatch3 = products.some((p) =>
+        p.name.includes("AMD Ryzen 7 Desktop"),
+      );
+      if (!hasExtraProductsBatch3) {
+        for (const p of extraProductsBatch3) {
+          actor.addProduct(
+            p.name,
+            p.description,
+            p.price,
+            p.category,
+            p.inStock,
+          );
+        }
+      }
+      // Add networking, peripherals & telephone products (batch 4)
+      const hasNetworkingBatch4 = products.some((p) =>
+        p.name.includes("Wired USB Mouse"),
+      );
+      if (!hasNetworkingBatch4) {
+        for (const p of networkingPeripheralsBatch4) {
           actor.addProduct(
             p.name,
             p.description,
